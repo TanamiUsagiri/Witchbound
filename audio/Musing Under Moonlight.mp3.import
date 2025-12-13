@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bn754unirns0a"
+path="res://.godot/imported/Musing Under Moonlight.mp3-b9031f0a4d06ff38626dbe0535f14892.mp3str"
+
+[deps]
+
+source_file="res://audio/Musing Under Moonlight.mp3"
+dest_files=["res://.godot/imported/Musing Under Moonlight.mp3-b9031f0a4d06ff38626dbe0535f14892.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

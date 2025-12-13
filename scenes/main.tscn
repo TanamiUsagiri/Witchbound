@@ -1,0 +1,393 @@
+[gd_scene load_steps=28 format=3 uid="uid://cr053t3wiuy1q"]
+
+[ext_resource type="PackedScene" uid="uid://ppm418ox32l3" path="res://characters/player.tscn" id="1_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://d3bscjsbeahha" path="res://enviroments/pine_tree.tscn" id="3_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://bifq4bsy2u0bn" path="res://mobs/wolf.tscn" id="3_tipki"]
+[ext_resource type="Script" uid="uid://rhj3dnp1jd1i" path="res://scripts/pause_menu.gd" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://c0lerhubg5aa4" path="res://spawner/enemy_spawner.tscn" id="4_ya4ey"]
+[ext_resource type="Script" uid="uid://bsxdbvdlxr6jv" path="res://scripts/wolf.gd" id="5_eb6dy"]
+[ext_resource type="FontFile" uid="uid://d4hesecdrugkx" path="res://fonts/MaestoRegularDemo-nAJV4.otf" id="5_tbgi4"]
+[ext_resource type="Script" uid="uid://beri8rwklmxad" path="res://scripts/main.gd" id="6_main"]
+[ext_resource type="Script" uid="uid://k0vn0kk2w18j" path="res://scripts/audio_sld.gd" id="6_o6xl0"]
+[ext_resource type="Texture2D" uid="uid://bww2r5jr8rvfg" path="res://assets/Sprites/Wolf/wolf-runing-cycle-skin.png" id="6_trceg"]
+[ext_resource type="Script" uid="uid://cmh8ppui2vmn6" path="res://scripts/fullscreen_tgl.gd" id="7_tipki"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5404k"]
+atlas = ExtResource("6_trceg")
+region = Rect2(0, 0, 56, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ii2x4"]
+atlas = ExtResource("6_trceg")
+region = Rect2(56, 0, 56, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wca6c"]
+atlas = ExtResource("6_trceg")
+region = Rect2(112, 0, 56, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_snhal"]
+atlas = ExtResource("6_trceg")
+region = Rect2(168, 0, 56, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s18ux"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5404k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ii2x4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wca6c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_snhal")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bxshq"]
+size = Vector2(38, 17)
+
+[sub_resource type="PackedScene" id="PackedScene_a8y0u"]
+resource_local_to_scene = true
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("Wolf", "CharacterBody2D", "motion_mode", "script", "AnimatedSprite2D", "AnimatedSprite2D", "texture_filter", "position", "sprite_frames", "animation", "CollisionShape2D", "CollisionShape2D", "position", "shape"),
+"node_count": 3,
+"node_paths": [NodePath("."), NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 2, 2, 0, 3, 1, 0, 1073741824, 0, 5, 4, -1, 4, 6, 2, 7, 3, 8, 4, 9, 5, 0, 1073741825, 0, 11, 10, -1, 2, 12, 6, 13, 7, 0),
+"variants": [1, ExtResource("5_eb6dy"), 1, Vector2(-1, -7), SubResource("SpriteFrames_s18ux"), &"walk", Vector2(0, -0.5), SubResource("RectangleShape2D_bxshq")],
+"version": 3
+}
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tbgi4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tefeu"]
+bg_color = Color(0.5803922, 0.9843137, 0.67058825, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.654902)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6xl0"]
+bg_color = Color(0.6627451, 1, 0.96862745, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tipki"]
+bg_color = Color(0.72156864, 0.88235295, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_85g3d"]
+color = Color(1, 1, 1, 1)
+thickness = 6
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_choun"]
+color = Color(0.22745098, 0.5254902, 1, 1)
+thickness = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ya4ey"]
+bg_color = Color(0.5803922, 0.9843137, 0.67058825, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.654902)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eb6dy"]
+bg_color = Color(0.6627451, 1, 0.96862745, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_trceg"]
+bg_color = Color(0.72156864, 0.88235295, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="main" type="Node2D"]
+script = ExtResource("6_main")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 1.0
+offset_top = 3.0
+offset_right = 1148.0
+offset_bottom = 647.0
+
+[node name="Player" parent="." instance=ExtResource("1_tbgi4")]
+position = Vector2(568, 287)
+
+[node name="EnemySpawner" parent="." instance=ExtResource("4_ya4ey")]
+enemy_scene = SubResource("PackedScene_a8y0u")
+
+[node name="enemies" type="Node2D" parent="."]
+
+[node name="Wolf" parent="enemies" instance=ExtResource("3_tipki")]
+position = Vector2(688, 303)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("3_o6xl0")]
+position = Vector2(449, 311)
+
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+script = ExtResource("4_jyhfs")
+
+[node name="Pause" type="Panel" parent="PauseMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -103.25
+offset_top = -108.0
+offset_right = 103.25
+offset_bottom = 108.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_tbgi4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/Pause"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.875
+offset_top = -109.5
+offset_right = 111.875
+offset_bottom = 109.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 6
+
+[node name="resume_btn" type="Button" parent="PauseMenu/Pause/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.50980395, 0.67058825, 0.6313726, 1)
+theme_override_colors/font_focus_color = Color(0.50980395, 0.67058825, 0.6313726, 1)
+theme_override_colors/font_pressed_color = Color(0.50980395, 0.67058825, 0.6313726, 1)
+theme_override_colors/font_hover_color = Color(0.50980395, 0.67058825, 0.6313726, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_tbgi4")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxFlat_tefeu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o6xl0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tipki")
+text = "Resume
+"
+
+[node name="setting_btn" type="Button" parent="PauseMenu/Pause/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.50980395, 0.67058825, 0.6313726, 1)
+theme_override_colors/font_focus_color = Color(0.50980395, 0.67058825, 0.6313726, 1)
+theme_override_colors/font_pressed_color = Color(0.50980395, 0.67058825, 0.6313726, 1)
+theme_override_colors/font_hover_color = Color(0.50980395, 0.67058825, 0.6313726, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_tbgi4")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxFlat_tefeu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o6xl0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tipki")
+text = "Setting"
+
+[node name="back_btn" type="Button" parent="PauseMenu/Pause/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.50980395, 0.67058825, 0.6313726, 1)
+theme_override_colors/font_focus_color = Color(0.50980395, 0.67058825, 0.6313726, 1)
+theme_override_colors/font_pressed_color = Color(0.50980395, 0.67058825, 0.6313726, 1)
+theme_override_colors/font_hover_color = Color(0.50980395, 0.67058825, 0.6313726, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_tbgi4")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxFlat_tefeu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o6xl0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tipki")
+text = "Exit"
+
+[node name="SettingPanel" type="Panel" parent="PauseMenu"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -261.0
+offset_top = -186.5
+offset_right = 261.0
+offset_bottom = 186.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="setting_lbl" type="Label" parent="PauseMenu/SettingPanel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 75.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.50980395, 0.67058825, 0.6313726, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_fonts/font = ExtResource("5_tbgi4")
+theme_override_font_sizes/font_size = 78
+text = "Setting"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="music_lbl" type="Label" parent="PauseMenu/SettingPanel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 16.0
+offset_top = 88.0
+offset_right = -386.0
+offset_bottom = 123.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.72156864, 0.88235295, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_fonts/font = ExtResource("5_tbgi4")
+theme_override_font_sizes/font_size = 28
+text = "Music"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SFX" type="Label" parent="PauseMenu/SettingPanel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 12.0
+offset_top = 157.0
+offset_right = -382.0
+offset_bottom = 216.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.72156864, 0.88235295, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_fonts/font = ExtResource("5_tbgi4")
+theme_override_font_sizes/font_size = 28
+text = "SFX
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="music_sld" type="HSlider" parent="PauseMenu/SettingPanel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 146.0
+offset_top = -109.5
+offset_right = -4.0
+offset_bottom = -51.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/slider = SubResource("StyleBoxLine_85g3d")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_choun")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_choun")
+max_value = 1.0
+step = 0.001
+value = 1.0
+script = ExtResource("6_o6xl0")
+audio_bus_name = "Music"
+
+[node name="sfx_sld" type="HSlider" parent="PauseMenu/SettingPanel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 146.0
+offset_top = -40.5
+offset_right = -4.0
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/slider = SubResource("StyleBoxLine_85g3d")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_choun")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_choun")
+max_value = 1.0
+step = 0.001
+value = 1.0
+script = ExtResource("6_o6xl0")
+audio_bus_name = "SFX"
+
+[node name="settingback_btn" type="Button" parent="PauseMenu/SettingPanel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -75.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.50980395, 0.67058825, 0.6313726, 1)
+theme_override_colors/font_focus_color = Color(0.50980395, 0.67058825, 0.6313726, 1)
+theme_override_colors/font_pressed_color = Color(0.50980395, 0.67058825, 0.6313726, 1)
+theme_override_colors/font_hover_color = Color(0.50980395, 0.67058825, 0.6313726, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_tbgi4")
+theme_override_font_sizes/font_size = 78
+theme_override_styles/normal = SubResource("StyleBoxFlat_ya4ey")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_eb6dy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_trceg")
+text = "Back"
+
+[node name="fullscreen-tgl" type="CheckButton" parent="PauseMenu/SettingPanel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 85.0
+offset_top = 40.5
+offset_right = -85.0
+offset_bottom = 101.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.72156864, 0.88235295, 1, 1)
+theme_override_colors/font_focus_color = Color(0.72156864, 0.88235295, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.72156864, 0.88235295, 1, 1)
+theme_override_colors/font_hover_color = Color(0.72156864, 0.88235295, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.72156864, 0.88235295, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.72156864, 0.88235295, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0.6627451, 1, 0.96862745, 1)
+theme_override_colors/icon_pressed_color = Color(0.6627451, 1, 0.96862745, 1)
+theme_override_colors/icon_hover_color = Color(0.6627451, 1, 0.96862745, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("5_tbgi4")
+theme_override_font_sizes/font_size = 55
+theme_override_colors/button_checked_color = Color(0.6627451, 1, 0.96862745, 1)
+theme_override_colors/button_unchecked_color = Color(0.6627451, 1, 0.96862745, 1)
+button_pressed = true
+text = "FullScreen"
+autowrap_mode = 3
+expand_icon = true
+script = ExtResource("7_tipki")
+
+[connection signal="pressed" from="PauseMenu/Pause/VBoxContainer/resume_btn" to="PauseMenu" method="_on_resume_btn_pressed"]
+[connection signal="pressed" from="PauseMenu/Pause/VBoxContainer/setting_btn" to="PauseMenu" method="_on_setting_btn_pressed"]
+[connection signal="pressed" from="PauseMenu/Pause/VBoxContainer/back_btn" to="PauseMenu" method="_on_back_btn_pressed"]
+[connection signal="value_changed" from="PauseMenu/SettingPanel/music_sld" to="PauseMenu/SettingPanel/music_sld" method="_on_value_changed"]
+[connection signal="value_changed" from="PauseMenu/SettingPanel/sfx_sld" to="PauseMenu/SettingPanel/sfx_sld" method="_on_value_changed"]
+[connection signal="pressed" from="PauseMenu/SettingPanel/settingback_btn" to="PauseMenu" method="_on_settingback_btn_pressed"]
+[connection signal="toggled" from="PauseMenu/SettingPanel/fullscreen-tgl" to="PauseMenu/SettingPanel/fullscreen-tgl" method="_on_toggled"]
