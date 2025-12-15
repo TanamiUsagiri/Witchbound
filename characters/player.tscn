@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://ppm418ox32l3"]
+[gd_scene load_steps=49 format=3 uid="uid://ppm418ox32l3"]
 
 [ext_resource type="Texture2D" uid="uid://c4gvw8b1evas8" path="res://assets/Sprites/Blue_witch/B_witch_idle.png" id="1_3eadt"]
 [ext_resource type="Texture2D" uid="uid://ffqgierc2qre" path="res://assets/Sprites/Blue_witch/B_witch_attack.png" id="1_evndh"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cjigtwbdd8aym" path="res://assets/Sprites/Blue_witch/B_witch_death.png" id="2_h1q25"]
 [ext_resource type="Texture2D" uid="uid://djnbsqnoj8akx" path="res://assets/Sprites/Blue_witch/B_witch_run.png" id="2_tory2"]
 [ext_resource type="Texture2D" uid="uid://dxljsc2nqaff2" path="res://assets/Sprites/Blue_witch/B_witch_take_damage.png" id="5_j31ep"]
+[ext_resource type="PackedScene" uid="uid://d2x60axllv4tv" path="res://components/hurtbox.tscn" id="7_6t23p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b0vde"]
 atlas = ExtResource("1_evndh")
@@ -302,10 +303,15 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_evndh"]
-radius = 6.0
+radius = 4.0
 height = 16.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n8jd0"]
+size = Vector2(10, 18)
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 2
+collision_mask = 2
 motion_mode = 1
 script = ExtResource("1_h1q25")
 
@@ -315,8 +321,21 @@ sprite_frames = SubResource("SpriteFrames_6t23p")
 animation = &"hurt"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 10)
+position = Vector2(0, 7)
 shape = SubResource("CapsuleShape2D_evndh")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.2, 2.2)
+
+[node name="Hurtbox" parent="." instance=ExtResource("7_6t23p")]
+position = Vector2(0, -1)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0" groups=["player"]]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_n8jd0")
+
+[connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]
+
+[editable path="Hurtbox"]

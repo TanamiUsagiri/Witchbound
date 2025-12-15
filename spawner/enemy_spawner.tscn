@@ -1,8 +1,50 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0lerhubg5aa4"]
+[gd_scene load_steps=9 format=3 uid="uid://c0lerhubg5aa4"]
 
 [ext_resource type="Script" uid="uid://dwohhk086nvwj" path="res://spawner/enemy_spawner.gd" id="1_l5nhv"]
-[ext_resource type="PackedScene" uid="uid://bifq4bsy2u0bn" path="res://mobs/wolf.tscn" id="2_d4mww"]
+[ext_resource type="PackedScene" uid="uid://bifq4bsy2u0bn" path="res://mobs/Enemy.tscn" id="2_d4mww"]
+[ext_resource type="Script" uid="uid://cwivh7aq0ogat" path="res://scenes/EnemyType.gd" id="3_lq83s"]
+[ext_resource type="Resource" uid="uid://djkywrvjtkel5" path="res://resources/Wolf.tres" id="4_eallr"]
+[ext_resource type="Resource" uid="uid://djowk668w6u00" path="res://resources/Snake.tres" id="5_v2odx"]
+[ext_resource type="Resource" uid="uid://q3j70j4ux727" path="res://resources/Mushroom.tres" id="6_4wstr"]
+[ext_resource type="Resource" uid="uid://blet157h82j0u" path="res://resources/DemonEye.tres" id="7_4vsng"]
+[ext_resource type="Resource" uid="uid://by1uj0mh3cqsi" path="res://resources/Dragon.tres" id="8_7wlvv"]
 
-[node name="EnemySpawner" type="Node2D"]
+[node name="Spawner" type="Node2D"]
 script = ExtResource("1_l5nhv")
-enemy_scene = ExtResource("2_d4mww")
+enemy = ExtResource("2_d4mww")
+enemy_type = Array[ExtResource("3_lq83s")]([ExtResource("4_eallr"), ExtResource("5_v2odx"), ExtResource("6_4wstr"), ExtResource("7_4vsng"), ExtResource("8_7wlvv")])
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
+offset_left = 1108.0
+offset_top = 2.0
+offset_right = 1150.0
+offset_bottom = 36.0
+
+[node name="Minute" type="Label" parent="UI/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="Label2" type="Label" parent="UI/HBoxContainer"]
+layout_mode = 2
+text = ":"
+
+[node name="Second" type="Label" parent="UI/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "00"
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Pattern" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[node name="Elite" type="Timer" parent="."]
+wait_time = 9.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

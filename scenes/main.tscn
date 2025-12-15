@@ -1,69 +1,12 @@
-[gd_scene load_steps=28 format=3 uid="uid://cr053t3wiuy1q"]
+[gd_scene load_steps=17 format=3 uid="uid://cr053t3wiuy1q"]
 
 [ext_resource type="PackedScene" uid="uid://ppm418ox32l3" path="res://characters/player.tscn" id="1_tbgi4"]
-[ext_resource type="PackedScene" uid="uid://d3bscjsbeahha" path="res://enviroments/pine_tree.tscn" id="3_o6xl0"]
-[ext_resource type="PackedScene" uid="uid://bifq4bsy2u0bn" path="res://mobs/wolf.tscn" id="3_tipki"]
 [ext_resource type="Script" uid="uid://rhj3dnp1jd1i" path="res://scripts/pause_menu.gd" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://c0lerhubg5aa4" path="res://spawner/enemy_spawner.tscn" id="4_ya4ey"]
-[ext_resource type="Script" uid="uid://bsxdbvdlxr6jv" path="res://scripts/wolf.gd" id="5_eb6dy"]
 [ext_resource type="FontFile" uid="uid://d4hesecdrugkx" path="res://fonts/MaestoRegularDemo-nAJV4.otf" id="5_tbgi4"]
 [ext_resource type="Script" uid="uid://beri8rwklmxad" path="res://scripts/main.gd" id="6_main"]
 [ext_resource type="Script" uid="uid://k0vn0kk2w18j" path="res://scripts/audio_sld.gd" id="6_o6xl0"]
-[ext_resource type="Texture2D" uid="uid://bww2r5jr8rvfg" path="res://assets/Sprites/Wolf/wolf-runing-cycle-skin.png" id="6_trceg"]
 [ext_resource type="Script" uid="uid://cmh8ppui2vmn6" path="res://scripts/fullscreen_tgl.gd" id="7_tipki"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5404k"]
-atlas = ExtResource("6_trceg")
-region = Rect2(0, 0, 56, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ii2x4"]
-atlas = ExtResource("6_trceg")
-region = Rect2(56, 0, 56, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wca6c"]
-atlas = ExtResource("6_trceg")
-region = Rect2(112, 0, 56, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_snhal"]
-atlas = ExtResource("6_trceg")
-region = Rect2(168, 0, 56, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_s18ux"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5404k")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ii2x4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wca6c")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_snhal")
-}],
-"loop": true,
-"name": &"walk",
-"speed": 5.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bxshq"]
-size = Vector2(38, 17)
-
-[sub_resource type="PackedScene" id="PackedScene_a8y0u"]
-resource_local_to_scene = true
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"names": PackedStringArray("Wolf", "CharacterBody2D", "motion_mode", "script", "AnimatedSprite2D", "AnimatedSprite2D", "texture_filter", "position", "sprite_frames", "animation", "CollisionShape2D", "CollisionShape2D", "position", "shape"),
-"node_count": 3,
-"node_paths": [NodePath("."), NodePath(".")],
-"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 2, 2, 0, 3, 1, 0, 1073741824, 0, 5, 4, -1, 4, 6, 2, 7, 3, 8, 4, 9, 5, 0, 1073741825, 0, 11, 10, -1, 2, 12, 6, 13, 7, 0),
-"variants": [1, ExtResource("5_eb6dy"), 1, Vector2(-1, -7), SubResource("SpriteFrames_s18ux"), &"walk", Vector2(0, -0.5), SubResource("RectangleShape2D_bxshq")],
-"version": 3
-}
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tbgi4"]
 
@@ -128,19 +71,12 @@ offset_top = 3.0
 offset_right = 1148.0
 offset_bottom = 647.0
 
+[node name="Spawner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_ya4ey")]
+player = NodePath("../Player")
+
 [node name="Player" parent="." instance=ExtResource("1_tbgi4")]
 position = Vector2(568, 287)
-
-[node name="EnemySpawner" parent="." instance=ExtResource("4_ya4ey")]
-enemy_scene = SubResource("PackedScene_a8y0u")
-
-[node name="enemies" type="Node2D" parent="."]
-
-[node name="Wolf" parent="enemies" instance=ExtResource("3_tipki")]
-position = Vector2(688, 303)
-
-[node name="StaticBody2D" parent="." instance=ExtResource("3_o6xl0")]
-position = Vector2(449, 311)
+motion_mode = 0
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]
 process_mode = 3

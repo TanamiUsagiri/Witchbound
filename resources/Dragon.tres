@@ -1,0 +1,82 @@
+[gd_resource type="Resource" script_class="EnemyType" load_steps=13 format=3 uid="uid://by1uj0mh3cqsi"]
+
+[ext_resource type="Script" uid="uid://cwivh7aq0ogat" path="res://scenes/EnemyType.gd" id="1_v6pud"]
+[ext_resource type="Texture2D" uid="uid://tty2f52m4qyl" path="res://assets/Sprites/sunny-dragon-fly.png" id="2_vh48t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6pud"]
+atlas = ExtResource("2_vh48t")
+region = Rect2(0, 0, 192, 176)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vh48t"]
+atlas = ExtResource("2_vh48t")
+region = Rect2(192, 0, 192, 176)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2q6m"]
+atlas = ExtResource("2_vh48t")
+region = Rect2(384, 0, 192, 176)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdb5r"]
+atlas = ExtResource("2_vh48t")
+region = Rect2(576, 0, 192, 176)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnl8o"]
+atlas = ExtResource("2_vh48t")
+region = Rect2(768, 0, 192, 176)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2uwd1"]
+atlas = ExtResource("2_vh48t")
+region = Rect2(960, 0, 192, 176)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7peo3"]
+atlas = ExtResource("2_vh48t")
+region = Rect2(1152, 0, 192, 176)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_560aq"]
+atlas = ExtResource("2_vh48t")
+region = Rect2(1344, 0, 192, 176)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxc3a"]
+atlas = ExtResource("2_vh48t")
+region = Rect2(1536, 0, 192, 176)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_laa6c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6pud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vh48t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o2q6m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hdb5r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nnl8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2uwd1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7peo3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_560aq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uxc3a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 9.0
+}]
+
+[resource]
+script = ExtResource("1_v6pud")
+title = "Dragon"
+sprite_frames = SubResource("SpriteFrames_laa6c")
+health = 200.0
+metadata/_custom_type_script = "uid://cwivh7aq0ogat"

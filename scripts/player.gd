@@ -1,64 +1,28 @@
 extends CharacterBody2D
 
-
-const SPEED := 100
-const MAX_HP := 100
-const WATER_SHURIKEN_SCENE = preload("res://bullets/water_shuriken.tscn")
-const INPUT_ACTIONS := {
-	"move_left": KEY_A,
-	"move_right": KEY_D,
-	"move_up": KEY_W,
-	"move_down": KEY_S,
-}
-
-var hp := MAX_HP
+var speed: float = 150
+var hp: float = 100
 var is_attacking := false
 var is_dead := false
 var is_hurt := false
-var water_shuriken_spawned := false
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-
 func _ready() -> void:
-	_setup_wasd_input()
 	animated_sprite.play("idle")
 
 func _physics_process(_delta: float) -> void:
-	if is_dead:
-		return
-	
-	if is_attacking or is_hurt:
-		return
-	
-	var input_vector := Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	var is_moving := input_vector.length_squared() > 0.0
-
-	if input_vector.length_squared() > 1.0:
+	var input_vector := Input.get_vector("left", "right", "up", "down")
+	var len_sq := input_vector.length_squared()
+	if len_sq > 1.0:
 		input_vector = input_vector.normalized()
 
-	velocity = input_vector * SPEED
-	_update_animation(is_moving, input_vector)
+	velocity = input_vector * speed
 	move_and_slide()
-	
-	# Check for attack input (Space key)
+	_update_animation(len_sq > 0.0, input_vector)
+
 	if Input.is_action_just_pressed("ui_accept") or Input.is_key_pressed(KEY_SPACE):
 		_attack()
-
-
-func _setup_wasd_input() -> void:
-	for action in INPUT_ACTIONS.keys():
-		if not InputMap.has_action(action):
-			InputMap.add_action(action)
-		var key_event := InputEventKey.new()
-		key_event.physical_keycode = INPUT_ACTIONS[action]
-
-		# Remove existing bindings so WASD becomes the sole scheme.
-		for event in InputMap.action_get_events(action):
-			InputMap.action_erase_event(action, event)
-
-		InputMap.action_add_event(action, key_event)
-
 
 func _update_animation(is_moving: bool, direction: Vector2) -> void:
 	if is_dead or is_attacking or is_hurt:
@@ -110,3 +74,7 @@ func die() -> void:
 	await animated_sprite.animation_finished
 	# Optionally handle death logic here
 
+
+func _on_hurtbox_hurt(dmg: Variant) -> void:
+	hp -= dmg
+	print(dmg)

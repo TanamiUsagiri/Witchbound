@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bww2r5jr8rvfg"
-path="res://.godot/imported/wolf-runing-cycle-skin.png-85da10c918d4f472540e8de0183cb488.ctex"
+uid="uid://dxlosaf0pu35k"
+path="res://.godot/imported/sunny-mushroom-walk.png-1efb713eb8c328c95496a12d0a35d68e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites/Wolf/wolf-runing-cycle-skin.png"
-dest_files=["res://.godot/imported/wolf-runing-cycle-skin.png-85da10c918d4f472540e8de0183cb488.ctex"]
+source_file="res://assets/Sprites/sunny-mushroom-walk.png"
+dest_files=["res://.godot/imported/sunny-mushroom-walk.png-1efb713eb8c328c95496a12d0a35d68e.ctex"]
 
 [params]
 

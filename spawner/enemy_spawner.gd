@@ -1,26 +1,39 @@
 extends Node2D
 
+@export var player : CharacterBody2D
+@export var enemy : PackedScene
 
-@export var enemy_scene : PackedScene
-@export var spawn_radius := 600.0
-@export var spawn_interval := 2.0
+var distance = 400
 
-@onready var player := get_tree().get_first_node_in_group("player")
-@onready var enemies := get_parent().get_node("enemies")
-func _ready() -> void:
-	var timer := Timer.new()
-	timer.wait_time = spawn_interval
-	timer.autostart = true
-	timer.timeout.connect(spawn_enemy)
-	add_child(timer)
+@export var enemy_type : Array[EnemyType]
+var minute : int:
+	set(value):
+		minute = value
+		%Minute.text = str(value)
+var second : int:
+	set(value):
+		second = value
+		if second >= 10:
+			second -=10
+			minute +=1
+		%Second.text = str(second).lpad(1,'0')
 
-func spawn_enemy():
-	if player == null:
-		return
-	var angle = randf() * TAU
-	var dir = Vector2(cos(angle), sin(angle))
-	var spawn_pos = player.global_position + dir * spawn_radius
+func spawn(pos : Vector2):
+	var enemy_instance = enemy.instantiate()
 
-	var enemy = enemy_scene.instantiate()
-	enemy.global_position = spawn_pos
-	enemies.add_child(enemy)
+	enemy_instance.enemy_type = enemy_type[min(minute, enemy_type.size() - 1)]
+	enemy_instance.position = pos
+	enemy_instance.player_reference = player
+
+	get_tree().current_scene.add_child(enemy_instance)
+
+func get_random_position() -> Vector2:
+	return player.position + distance * Vector2.RIGHT.rotated(randf_range(0, 2 * PI))
+
+func amount(number : int = 1):
+	for i in range(number):
+		spawn(get_random_position()) 
+
+func _on_timer_timeout() -> void:
+	second += 1
+	amount(second % 60)
