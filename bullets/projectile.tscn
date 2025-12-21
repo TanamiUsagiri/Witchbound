@@ -1,0 +1,111 @@
+[gd_scene load_steps=17 format=3 uid="uid://dxpfsf35ajb2i"]
+
+[ext_resource type="Script" uid="uid://bo6x2e7fgow75" path="res://bullets/projectile.gd" id="1_he1so"]
+[ext_resource type="Texture2D" uid="uid://d3emv0j0v1g6r" path="res://assets/Bullet/spark.png" id="1_tt1rf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_he1so"]
+atlas = ExtResource("1_tt1rf")
+region = Rect2(0, 0, 63, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdfqe"]
+atlas = ExtResource("1_tt1rf")
+region = Rect2(63, 0, 63, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_87x02"]
+atlas = ExtResource("1_tt1rf")
+region = Rect2(126, 0, 63, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70dkg"]
+atlas = ExtResource("1_tt1rf")
+region = Rect2(189, 0, 63, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_njdnx"]
+atlas = ExtResource("1_tt1rf")
+region = Rect2(252, 0, 63, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eg3jm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_he1so")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdfqe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_87x02")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70dkg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_njdnx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1fbqg"]
+size = Vector2(34, 10)
+
+[sub_resource type="Gradient" id="Gradient_he1so"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_pdfqe"]
+gradient = SubResource("Gradient_he1so")
+
+[sub_resource type="Gradient" id="Gradient_87x02"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1.1743903e-05, 0.7144821, 0.94291204, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_70dkg"]
+gradient = SubResource("Gradient_87x02")
+
+[sub_resource type="Curve" id="Curve_njdnx"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.036410928), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_eg3jm"]
+curve = SubResource("Curve_njdnx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1fbqg"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 8.0
+initial_velocity_min = -10.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_eg3jm")
+color_ramp = SubResource("GradientTexture1D_70dkg")
+color_initial_ramp = SubResource("GradientTexture1D_pdfqe")
+turbulence_enabled = true
+turbulence_noise_speed = Vector3(0, 1, 0)
+turbulence_influence_max = 0.25300002
+
+[node name="Projectile" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_he1so")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.7936508, 0.5625)
+sprite_frames = SubResource("SpriteFrames_eg3jm")
+frame = 2
+frame_progress = 0.47520983
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 0)
+shape = SubResource("RectangleShape2D_1fbqg")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_1fbqg")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]

@@ -1,22 +1,22 @@
 [gd_resource type="Resource" script_class="EnemyType" load_steps=8 format=3 uid="uid://djowk668w6u00"]
 
-[ext_resource type="Script" uid="uid://cwivh7aq0ogat" path="res://scenes/EnemyType.gd" id="1_nvv4m"]
-[ext_resource type="Texture2D" uid="uid://w6yl0q0rbn6o" path="res://assets/Sprites/Snake_walk.png" id="2_m1ras"]
+[ext_resource type="Script" uid="uid://cwivh7aq0ogat" path="res://scenes/EnemyType.gd" id="1_4f2uu"]
+[ext_resource type="Texture2D" uid="uid://w6yl0q0rbn6o" path="res://assets/Sprites/Snake_walk.png" id="2_liy63"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nvv4m"]
-atlas = ExtResource("2_m1ras")
+atlas = ExtResource("2_liy63")
 region = Rect2(0, 0, 27, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m1ras"]
-atlas = ExtResource("2_m1ras")
+atlas = ExtResource("2_liy63")
 region = Rect2(27, 0, 27, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ytth"]
-atlas = ExtResource("2_m1ras")
+atlas = ExtResource("2_liy63")
 region = Rect2(54, 0, 27, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_edyfa"]
-atlas = ExtResource("2_m1ras")
+atlas = ExtResource("2_liy63")
 region = Rect2(81, 0, 27, 20)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c5qyw"]
@@ -40,7 +40,9 @@ animations = [{
 }]
 
 [resource]
-script = ExtResource("1_nvv4m")
+script = ExtResource("1_4f2uu")
 title = "Snake"
 sprite_frames = SubResource("SpriteFrames_c5qyw")
+health = 4.0
+dmg = 4.0
 metadata/_custom_type_script = "uid://cwivh7aq0ogat"

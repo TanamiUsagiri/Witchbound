@@ -1,12 +1,13 @@
-[gd_scene load_steps=49 format=3 uid="uid://ppm418ox32l3"]
+[gd_scene load_steps=50 format=3 uid="uid://ppm418ox32l3"]
 
 [ext_resource type="Texture2D" uid="uid://c4gvw8b1evas8" path="res://assets/Sprites/Blue_witch/B_witch_idle.png" id="1_3eadt"]
 [ext_resource type="Texture2D" uid="uid://ffqgierc2qre" path="res://assets/Sprites/Blue_witch/B_witch_attack.png" id="1_evndh"]
 [ext_resource type="Script" uid="uid://j34000vxfa8t" path="res://scripts/player.gd" id="1_h1q25"]
+[ext_resource type="PackedScene" uid="uid://dx1v262pmvh83" path="res://components/slot.tscn" id="2_6t23p"]
 [ext_resource type="Texture2D" uid="uid://cjigtwbdd8aym" path="res://assets/Sprites/Blue_witch/B_witch_death.png" id="2_h1q25"]
 [ext_resource type="Texture2D" uid="uid://djnbsqnoj8akx" path="res://assets/Sprites/Blue_witch/B_witch_run.png" id="2_tory2"]
+[ext_resource type="Resource" uid="uid://d3m0qcdgordqo" path="res://resources/Weapons/Spark.tres" id="3_n8jd0"]
 [ext_resource type="Texture2D" uid="uid://dxljsc2nqaff2" path="res://assets/Sprites/Blue_witch/B_witch_take_damage.png" id="5_j31ep"]
-[ext_resource type="PackedScene" uid="uid://d2x60axllv4tv" path="res://components/hurtbox.tscn" id="7_6t23p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b0vde"]
 atlas = ExtResource("1_evndh")
@@ -306,14 +307,30 @@ animations = [{
 radius = 4.0
 height = 16.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_n8jd0"]
-size = Vector2(10, 18)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h1q25"]
+radius = 6.0
+height = 22.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
-collision_mask = 2
-motion_mode = 1
+collision_mask = 3
 script = ExtResource("1_h1q25")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Weapons" type="HBoxContainer" parent="UI"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Slot" parent="UI/Weapons" instance=ExtResource("2_6t23p")]
+layout_mode = 2
+weapon = ExtResource("3_n8jd0")
+
+[node name="Slot2" parent="UI/Weapons" instance=ExtResource("2_6t23p")]
+layout_mode = 2
+
+[node name="Slot3" parent="UI/Weapons" instance=ExtResource("2_6t23p")]
+layout_mode = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -327,15 +344,31 @@ shape = SubResource("CapsuleShape2D_evndh")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.2, 2.2)
 
-[node name="Hurtbox" parent="." instance=ExtResource("7_6t23p")]
-position = Vector2(0, -1)
-collision_layer = 2
-collision_mask = 2
+[node name="SelfDmg" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
 
-[node name="CollisionShape2D" parent="Hurtbox" index="0" groups=["player"]]
-position = Vector2(0, 8)
-shape = SubResource("RectangleShape2D_n8jd0")
+[node name="Collision" type="CollisionShape2D" parent="SelfDmg"]
+unique_name_in_owner = true
+position = Vector2(0, 6)
+shape = SubResource("CapsuleShape2D_h1q25")
 
-[connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]
+[node name="Health" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -16.0
+offset_top = -27.0
+offset_right = 14.0
+offset_bottom = -22.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 16
+value = 100.0
+show_percentage = false
 
-[editable path="Hurtbox"]
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="body_entered" from="SelfDmg" to="." method="_on_self_dmg_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,46 +1,46 @@
 [gd_resource type="Resource" script_class="EnemyType" load_steps=14 format=3 uid="uid://q3j70j4ux727"]
 
-[ext_resource type="Script" uid="uid://cwivh7aq0ogat" path="res://scenes/EnemyType.gd" id="1_hcmda"]
-[ext_resource type="Texture2D" uid="uid://dxlosaf0pu35k" path="res://assets/Sprites/sunny-mushroom-walk.png" id="2_ygbxa"]
+[ext_resource type="Script" uid="uid://cwivh7aq0ogat" path="res://scenes/EnemyType.gd" id="1_gpktu"]
+[ext_resource type="Texture2D" uid="uid://dxlosaf0pu35k" path="res://assets/Sprites/sunny-mushroom-walk.png" id="2_fsci0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hcmda"]
-atlas = ExtResource("2_ygbxa")
+atlas = ExtResource("2_fsci0")
 region = Rect2(0, 0, 41, 30)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ygbxa"]
-atlas = ExtResource("2_ygbxa")
+atlas = ExtResource("2_fsci0")
 region = Rect2(41, 0, 41, 30)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d16b8"]
-atlas = ExtResource("2_ygbxa")
+atlas = ExtResource("2_fsci0")
 region = Rect2(82, 0, 41, 30)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pp3m3"]
-atlas = ExtResource("2_ygbxa")
+atlas = ExtResource("2_fsci0")
 region = Rect2(123, 0, 41, 30)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i6hgw"]
-atlas = ExtResource("2_ygbxa")
+atlas = ExtResource("2_fsci0")
 region = Rect2(164, 0, 41, 30)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cu6sv"]
-atlas = ExtResource("2_ygbxa")
+atlas = ExtResource("2_fsci0")
 region = Rect2(205, 0, 41, 30)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tsfks"]
-atlas = ExtResource("2_ygbxa")
+atlas = ExtResource("2_fsci0")
 region = Rect2(246, 0, 41, 30)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lg6e8"]
-atlas = ExtResource("2_ygbxa")
+atlas = ExtResource("2_fsci0")
 region = Rect2(287, 0, 41, 30)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b0vs7"]
-atlas = ExtResource("2_ygbxa")
+atlas = ExtResource("2_fsci0")
 region = Rect2(328, 0, 41, 30)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wwsjl"]
-atlas = ExtResource("2_ygbxa")
+atlas = ExtResource("2_fsci0")
 region = Rect2(369, 0, 41, 30)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c0ync"]
@@ -82,7 +82,9 @@ animations = [{
 }]
 
 [resource]
-script = ExtResource("1_hcmda")
+script = ExtResource("1_gpktu")
 title = "Mushroom"
 sprite_frames = SubResource("SpriteFrames_c0ync")
+health = 6.0
+dmg = 6.0
 metadata/_custom_type_script = "uid://cwivh7aq0ogat"

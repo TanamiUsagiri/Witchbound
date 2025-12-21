@@ -3,11 +3,11 @@
 [ext_resource type="Script" uid="uid://dwohhk086nvwj" path="res://spawner/enemy_spawner.gd" id="1_l5nhv"]
 [ext_resource type="PackedScene" uid="uid://bifq4bsy2u0bn" path="res://mobs/Enemy.tscn" id="2_d4mww"]
 [ext_resource type="Script" uid="uid://cwivh7aq0ogat" path="res://scenes/EnemyType.gd" id="3_lq83s"]
-[ext_resource type="Resource" uid="uid://djkywrvjtkel5" path="res://resources/Wolf.tres" id="4_eallr"]
-[ext_resource type="Resource" uid="uid://djowk668w6u00" path="res://resources/Snake.tres" id="5_v2odx"]
-[ext_resource type="Resource" uid="uid://q3j70j4ux727" path="res://resources/Mushroom.tres" id="6_4wstr"]
-[ext_resource type="Resource" uid="uid://blet157h82j0u" path="res://resources/DemonEye.tres" id="7_4vsng"]
-[ext_resource type="Resource" uid="uid://by1uj0mh3cqsi" path="res://resources/Dragon.tres" id="8_7wlvv"]
+[ext_resource type="Resource" uid="uid://djkywrvjtkel5" path="res://resources/Enemies/Wolf.tres" id="4_eallr"]
+[ext_resource type="Resource" uid="uid://djowk668w6u00" path="res://resources/Enemies/Snake.tres" id="5_v2odx"]
+[ext_resource type="Resource" uid="uid://q3j70j4ux727" path="res://resources/Enemies/Mushroom.tres" id="6_4wstr"]
+[ext_resource type="Resource" uid="uid://blet157h82j0u" path="res://resources/Enemies/DemonEye.tres" id="7_4vsng"]
+[ext_resource type="Resource" uid="uid://by1uj0mh3cqsi" path="res://resources/Enemies/Dragon.tres" id="8_7wlvv"]
 
 [node name="Spawner" type="Node2D"]
 script = ExtResource("1_l5nhv")
@@ -48,3 +48,5 @@ wait_time = 9.0
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Pattern" to="." method="_on_pattern_timeout"]
+[connection signal="timeout" from="Elite" to="." method="_on_elite_timeout"]

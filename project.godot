@@ -22,6 +22,11 @@ window/stretch/mode="canvas_items"
 [file_customization]
 
 folder_colors={
+"res://Shader/": "orange",
+"res://characters/": "blue",
+"res://components/": "gray",
+"res://enviroments/": "green",
+"res://mobs/": "red",
 "res://resources/": "blue"
 }
 

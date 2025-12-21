@@ -1,12 +1,318 @@
-[gd_scene load_steps=17 format=3 uid="uid://cr053t3wiuy1q"]
+[gd_scene load_steps=25 format=3 uid="uid://cr053t3wiuy1q"]
 
 [ext_resource type="PackedScene" uid="uid://ppm418ox32l3" path="res://characters/player.tscn" id="1_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://bt5flqr4ayqxo" path="res://assets/tiles/gentle forest v03.png" id="2_tipki"]
+[ext_resource type="Script" uid="uid://dnvbqqixnw7b7" path="res://scripts/world.gd" id="2_ya4ey"]
+[ext_resource type="Texture2D" uid="uid://btnglipmyprx0" path="res://assets/tiles/gentle trees 80x96 v03.png" id="3_choun"]
+[ext_resource type="Texture2D" uid="uid://bllrhoupvejvf" path="res://assets/tiles/gentle 32x32 v03.png" id="4_eb6dy"]
 [ext_resource type="Script" uid="uid://rhj3dnp1jd1i" path="res://scripts/pause_menu.gd" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://c0lerhubg5aa4" path="res://spawner/enemy_spawner.tscn" id="4_ya4ey"]
 [ext_resource type="FontFile" uid="uid://d4hesecdrugkx" path="res://fonts/MaestoRegularDemo-nAJV4.otf" id="5_tbgi4"]
 [ext_resource type="Script" uid="uid://beri8rwklmxad" path="res://scripts/main.gd" id="6_main"]
 [ext_resource type="Script" uid="uid://k0vn0kk2w18j" path="res://scripts/audio_sld.gd" id="6_o6xl0"]
 [ext_resource type="Script" uid="uid://cmh8ppui2vmn6" path="res://scripts/fullscreen_tgl.gd" id="7_tipki"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eb6dy"]
+texture = ExtResource("2_tipki")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+14:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+12:1/0 = 0
+13:1/0 = 0
+14:1/0 = 0
+15:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+12:2/0 = 0
+13:2/0 = 0
+14:2/0 = 0
+15:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+10:3/0 = 0
+11:3/0 = 0
+12:3/0 = 0
+13:3/0 = 0
+14:3/0 = 0
+15:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+10:4/0 = 0
+12:4/0 = 0
+13:4/0 = 0
+14:4/0 = 0
+15:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+10:5/0 = 0
+12:5/0 = 0
+13:5/0 = 0
+14:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+10:6/0 = 0
+12:6/0 = 0
+13:6/0 = 0
+14:6/0 = 0
+15:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+12:7/0 = 0
+13:7/0 = 0
+14:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+8:8/0 = 0
+9:8/0 = 0
+10:8/0 = 0
+11:8/0 = 0
+12:8/0 = 0
+13:8/0 = 0
+14:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+8:9/0 = 0
+11:9/0 = 0
+12:9/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+6:10/0 = 0
+7:10/0 = 0
+12:10/0 = 0
+13:10/0 = 0
+14:10/0 = 0
+15:10/0 = 0
+0:11/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+6:11/0 = 0
+7:11/0 = 0
+9:11/0 = 0
+10:11/0 = 0
+12:11/0 = 0
+13:11/0 = 0
+14:11/0 = 0
+15:11/0 = 0
+0:12/0 = 0
+1:12/0 = 0
+2:12/0 = 0
+3:12/0 = 0
+4:12/0 = 0
+5:12/0 = 0
+6:12/0 = 0
+7:12/0 = 0
+8:12/0 = 0
+11:12/0 = 0
+12:12/0 = 0
+13:12/0 = 0
+14:12/0 = 0
+15:12/0 = 0
+0:13/0 = 0
+1:13/0 = 0
+2:13/0 = 0
+3:13/0 = 0
+4:13/0 = 0
+5:13/0 = 0
+6:13/0 = 0
+7:13/0 = 0
+8:13/0 = 0
+9:13/0 = 0
+10:13/0 = 0
+11:13/0 = 0
+12:13/0 = 0
+13:13/0 = 0
+15:13/0 = 0
+0:14/0 = 0
+1:14/0 = 0
+2:14/0 = 0
+3:14/0 = 0
+4:14/0 = 0
+5:14/0 = 0
+6:14/0 = 0
+7:14/0 = 0
+8:14/0 = 0
+9:14/0 = 0
+10:14/0 = 0
+11:14/0 = 0
+12:14/0 = 0
+13:14/0 = 0
+14:14/0 = 0
+15:14/0 = 0
+0:15/0 = 0
+1:15/0 = 0
+2:15/0 = 0
+3:15/0 = 0
+5:15/0 = 0
+6:15/0 = 0
+8:15/0 = 0
+9:15/0 = 0
+10:15/0 = 0
+11:15/0 = 0
+13:15/0 = 0
+14:15/0 = 0
+15:15/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_trceg"]
+texture = ExtResource("3_choun")
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a8y0u"]
+texture = ExtResource("4_eb6dy")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_jkv2x"]
+sources/0 = SubResource("TileSetAtlasSource_eb6dy")
+sources/1 = SubResource("TileSetAtlasSource_trceg")
+sources/2 = SubResource("TileSetAtlasSource_a8y0u")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tbgi4"]
 
@@ -65,18 +371,25 @@ corner_radius_bottom_left = 10
 [node name="main" type="Node2D"]
 script = ExtResource("6_main")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = 1.0
-offset_top = 3.0
-offset_right = 1148.0
-offset_bottom = 647.0
+[node name="World" type="Node2D" parent="."]
+script = ExtResource("2_ya4ey")
 
-[node name="Spawner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_ya4ey")]
+[node name="TileMapLayer" type="TileMapLayer" parent="World"]
+tile_set = SubResource("TileSet_jkv2x")
+
+[node name="Player" parent="World" instance=ExtResource("1_tbgi4")]
+position = Vector2(520.00006, 238.00003)
+scale = Vector2(1.3, 1.3)
+
+[node name="Camera2D" parent="World/Player" index="2"]
+zoom = Vector2(2, 2)
+
+[node name="Spawner" parent="World" node_paths=PackedStringArray("player") instance=ExtResource("4_ya4ey")]
+visible = false
 player = NodePath("../Player")
 
-[node name="Player" parent="." instance=ExtResource("1_tbgi4")]
-position = Vector2(568, 287)
-motion_mode = 0
+[node name="Parallax2D" type="Parallax2D" parent="."]
+repeat_size = Vector2(1136, 656)
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -327,3 +640,5 @@ script = ExtResource("7_tipki")
 [connection signal="value_changed" from="PauseMenu/SettingPanel/sfx_sld" to="PauseMenu/SettingPanel/sfx_sld" method="_on_value_changed"]
 [connection signal="pressed" from="PauseMenu/SettingPanel/settingback_btn" to="PauseMenu" method="_on_settingback_btn_pressed"]
 [connection signal="toggled" from="PauseMenu/SettingPanel/fullscreen-tgl" to="PauseMenu/SettingPanel/fullscreen-tgl" method="_on_toggled"]
+
+[editable path="World/Player"]

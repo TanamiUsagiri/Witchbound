@@ -1,22 +1,22 @@
 [gd_resource type="Resource" script_class="EnemyType" load_steps=8 format=3 uid="uid://djkywrvjtkel5"]
 
-[ext_resource type="Script" uid="uid://cwivh7aq0ogat" path="res://scenes/EnemyType.gd" id="1_7e6ch"]
-[ext_resource type="Texture2D" uid="uid://bww2r5jr8rvfg" path="res://assets/Sprites/wolf-runing-cycle-skin.png" id="2_ak6ol"]
+[ext_resource type="Script" uid="uid://cwivh7aq0ogat" path="res://scenes/EnemyType.gd" id="1_g84s2"]
+[ext_resource type="Texture2D" uid="uid://bww2r5jr8rvfg" path="res://assets/Sprites/wolf-runing-cycle-skin.png" id="2_ugg53"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7e6ch"]
-atlas = ExtResource("2_ak6ol")
+atlas = ExtResource("2_ugg53")
 region = Rect2(0, 0, 56, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ak6ol"]
-atlas = ExtResource("2_ak6ol")
+atlas = ExtResource("2_ugg53")
 region = Rect2(56, 0, 56, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nxes8"]
-atlas = ExtResource("2_ak6ol")
+atlas = ExtResource("2_ugg53")
 region = Rect2(112, 0, 56, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wkon8"]
-atlas = ExtResource("2_ak6ol")
+atlas = ExtResource("2_ugg53")
 region = Rect2(168, 0, 56, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_napdx"]
@@ -40,7 +40,9 @@ animations = [{
 }]
 
 [resource]
-script = ExtResource("1_7e6ch")
+script = ExtResource("1_g84s2")
 title = "Wolf"
 sprite_frames = SubResource("SpriteFrames_napdx")
+health = 2.0
+dmg = 2.0
 metadata/_custom_type_script = "uid://cwivh7aq0ogat"

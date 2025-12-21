@@ -1,9 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://bifq4bsy2u0bn"]
+[gd_scene load_steps=9 format=3 uid="uid://bifq4bsy2u0bn"]
 
 [ext_resource type="Script" uid="uid://bbatv0vr8agsh" path="res://scripts/Enemy.gd" id="1_3bg6i"]
 [ext_resource type="Texture2D" uid="uid://bww2r5jr8rvfg" path="res://assets/Sprites/wolf-runing-cycle-skin.png" id="2_j1tiw"]
-[ext_resource type="PackedScene" uid="uid://d2x60axllv4tv" path="res://components/hurtbox.tscn" id="3_d7857"]
-[ext_resource type="PackedScene" uid="uid://brb8bog8jprto" path="res://components/hitbox.tscn" id="4_qpn2o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5404k"]
 atlas = ExtResource("2_j1tiw")
@@ -41,47 +39,19 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bxshq"]
-size = Vector2(24, 7)
+[sub_resource type="CircleShape2D" id="CircleShape2D_j1tiw"]
+radius = 11.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wca6c"]
-size = Vector2(33, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_snhal"]
-size = Vector2(31, 14)
-
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 4
-collision_mask = 4
+collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_3bg6i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(-1, -7)
+position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_s18ux")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(4, -2.5)
-shape = SubResource("RectangleShape2D_bxshq")
-
-[node name="Hurtbox" parent="." instance=ExtResource("3_d7857")]
-collision_layer = 4
-collision_mask = 4
-
-[node name="CollisionShape2D" parent="Hurtbox" index="0"]
-position = Vector2(2.5, -2)
-shape = SubResource("RectangleShape2D_wca6c")
-
-[node name="Hitbox" parent="." instance=ExtResource("4_qpn2o")]
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape2D" parent="Hitbox" index="0"]
-position = Vector2(2.5, -2)
-shape = SubResource("RectangleShape2D_snhal")
-
-[connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]
-
-[editable path="Hurtbox"]
-[editable path="Hitbox"]
+shape = SubResource("CircleShape2D_j1tiw")

@@ -1,38 +1,38 @@
 [gd_resource type="Resource" script_class="EnemyType" load_steps=12 format=3 uid="uid://blet157h82j0u"]
 
-[ext_resource type="Script" uid="uid://cwivh7aq0ogat" path="res://scenes/EnemyType.gd" id="1_q5m6g"]
-[ext_resource type="Texture2D" uid="uid://hnetgxfad1b4" path="res://assets/Sprites/FlyingEyeDemon.png" id="2_7lt4x"]
+[ext_resource type="Script" uid="uid://cwivh7aq0ogat" path="res://scenes/EnemyType.gd" id="1_c47ed"]
+[ext_resource type="Texture2D" uid="uid://hnetgxfad1b4" path="res://assets/Sprites/FlyingEyeDemon.png" id="2_nswex"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q5m6g"]
-atlas = ExtResource("2_7lt4x")
+atlas = ExtResource("2_nswex")
 region = Rect2(0, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7lt4x"]
-atlas = ExtResource("2_7lt4x")
+atlas = ExtResource("2_nswex")
 region = Rect2(48, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bj1q8"]
-atlas = ExtResource("2_7lt4x")
+atlas = ExtResource("2_nswex")
 region = Rect2(96, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gk02d"]
-atlas = ExtResource("2_7lt4x")
+atlas = ExtResource("2_nswex")
 region = Rect2(144, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bydrl"]
-atlas = ExtResource("2_7lt4x")
+atlas = ExtResource("2_nswex")
 region = Rect2(192, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rwo3l"]
-atlas = ExtResource("2_7lt4x")
+atlas = ExtResource("2_nswex")
 region = Rect2(240, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2v3ih"]
-atlas = ExtResource("2_7lt4x")
+atlas = ExtResource("2_nswex")
 region = Rect2(288, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lirn0"]
-atlas = ExtResource("2_7lt4x")
+atlas = ExtResource("2_nswex")
 region = Rect2(336, 0, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cyumu"]
@@ -68,8 +68,9 @@ animations = [{
 }]
 
 [resource]
-script = ExtResource("1_q5m6g")
+script = ExtResource("1_c47ed")
 title = "DemonEye"
 sprite_frames = SubResource("SpriteFrames_cyumu")
-health = 100.0
+health = 8.0
+dmg = 8.0
 metadata/_custom_type_script = "uid://cwivh7aq0ogat"
