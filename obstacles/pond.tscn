@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpdwxw3fd1xe1"]
+
+[ext_resource type="Texture2D" uid="uid://bt5flqr4ayqxo" path="res://assets/tiles/gentle forest v03.png" id="1_07naf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvkes"]
+atlas = ExtResource("1_07naf")
+region = Rect2(-1, 127, 65, 65)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hv40b"]
+size = Vector2(54, 56)
+
+[node name="Water" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = SubResource("AtlasTexture_vvkes")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_hv40b")

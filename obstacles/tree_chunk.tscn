@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dt463ms013coj"]
+
+[ext_resource type="Texture2D" uid="uid://bllrhoupvejvf" path="res://assets/tiles/gentle 32x32 v03.png" id="1_e7mpw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ksbb"]
+atlas = ExtResource("1_e7mpw")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pxr61"]
+radius = 7.0
+height = 14.0
+
+[node name="TreeChunk" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture_filter = 1
+texture = SubResource("AtlasTexture_5ksbb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_pxr61")

@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://gwjndcbv27op"]
+
+[ext_resource type="Script" uid="uid://b00gl075pqk51" path="res://obstacles/tall_grass.gd" id="1_fkabw"]
+[ext_resource type="Texture2D" uid="uid://bllrhoupvejvf" path="res://assets/tiles/gentle 32x32 v03.png" id="1_poye4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkabw"]
+atlas = ExtResource("1_poye4")
+region = Rect2(96, 0, 32, 32)
+
+[node name="TallGrass" type="Node2D"]
+script = ExtResource("1_fkabw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_fkabw")

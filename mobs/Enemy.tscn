@@ -44,11 +44,11 @@ radius = 11.0
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 4
-collision_mask = 5
+collision_mask = 4
 motion_mode = 1
 script = ExtResource("1_3bg6i")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Enemy"]]
 texture_filter = 1
 position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_s18ux")
