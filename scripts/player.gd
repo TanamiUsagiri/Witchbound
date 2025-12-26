@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed: float = 150
+var speed: float = 120
 var hp: float = 100:
 	set(value):
 			hp = value
@@ -20,7 +20,6 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	if is_instance_valid(nearest_enemy):
 		nearest_enemy_distance = nearest_enemy.separation
-		print(nearest_enemy.name)
 	else:
 		nearest_enemy_distance = INF
 

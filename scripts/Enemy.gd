@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 var damage_popup_node = preload("res://components/damage.tscn")
 var direction : Vector2
-var speed : float = 75
+var speed : float = 80
 var dmg : float
 var knockback : Vector2
 var separation : float

@@ -3,7 +3,7 @@ extends Node2D
 @export var player : CharacterBody2D
 @export var enemy : PackedScene
 
-var distance = 400
+var distance = 320
 var can_spawn : bool = true
 
 @export var enemy_type : Array[EnemyType]
@@ -14,13 +14,13 @@ var minute : int:
 var second : int:
 	set(value):
 		second = value
-		if second >= 10:
-			second -=10
+		if second >= 60:
+			second -=60
 			minute +=1
 		%Second.text = str(second).lpad(1,'0')
 
 func _physics_process(_delta: float) -> void:
-	if get_tree().get_node_count_in_group("Enemy") < 300:
+	if get_tree().get_node_count_in_group("Enemy") < 200:
 		can_spawn = true
 	else:
 		can_spawn = false
@@ -47,11 +47,11 @@ func amount(number : int = 1):
 
 func _on_timer_timeout() -> void:
 	second += 1
-	amount(second % 60)
+	amount(1 + minute)
 
 
 func _on_pattern_timeout() -> void:
-	for i in range(75):
+	for i in range(30):
 		spawn(get_random_position())
 
 

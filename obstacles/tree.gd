@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var sprite : Sprite2D = $Sprite2D
+@onready var sprite : Sprite2D = $StaticBody2D/Sprite2D
 @export var rustle_area : Area2D
 
 func _ready() -> void:
@@ -30,5 +30,3 @@ func _on_body_entered(body):
         tween.tween_property(sprite, "modulate:a", 0.5, 0.2)
         tween.tween_property(sprite, "modulate:a", 1.0, 0.3)
 
-func _process(_delta: float) -> void:
-    z_index = int(global_position.y)
